@@ -1,0 +1,7 @@
+selenium==4.18.0        # Browser automation
+pytest==8.1.1           # Test framework
+pytest-xdist==3.5.0     # Parallel execution
+allure-pytest==2.13.5   # Generate Allure reports
+webdriver-manager==4.0.1 # Automatically manage webdrivers
+#wen yoi download pytest it will tske latest model
+# other peron in future if installed get other version installed nd cause problem so define versions tooblem

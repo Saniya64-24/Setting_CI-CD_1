@@ -1,2 +1,22 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Virtual Environment
+venv/
+VENV/
+
+# Pytest cache
+.pytest_cache/
+
+# Test Reports
+reports/
+*.html
+
+# Screenshots
+screenshots/
+*.png
+
+# Logs
+logs/
+*.log
+
+# Python cache
+__pycache__/
+*.pyc

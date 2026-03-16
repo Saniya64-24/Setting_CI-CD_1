@@ -1,0 +1,47 @@
+# Defines all containers (services) that will run in this infrastructure
+services:
+
+    # Selenium Hub acts as the central controller for all browser nodes
+    selenium-hub:
+
+        # Specifies the Docker image used for Selenium Hub
+        image: selenium/hub:4.18.0
+
+        # Assigns a custom name to the container
+        container_name: selenium-hub
+
+        # Maps container port to host port
+        ports:
+            - "4444:4444"
+
+    # Chrome browser node used to execute tests in Chrome browser
+    chrome:
+
+        # Docker image for Chrome node
+        image: selenium/node-chrome:4.18.0
+
+        # Ensures hub starts first
+        depends_on:
+            - selenium-hub
+
+        # Environment variables to connect node to hub
+        environment:
+            - SE_EVENT_BUS_HOST=selenium-hub
+            - SE_EVENT_BUS_PUBLISH_PORT=4442
+            - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+    # Firefox browser node used to execute tests in Firefox browser
+    firefox:
+
+        # Docker image for Firefox node
+        image: selenium/node-firefox:4.18.0
+
+        # Ensures hub starts first
+        depends_on:
+            - selenium-hub
+
+        # Environment variables for hub communication
+        environment:
+            - SE_EVENT_BUS_HOST=selenium-hub
+            - SE_EVENT_BUS_PUBLISH_PORT=4442
+            - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
