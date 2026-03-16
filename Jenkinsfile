@@ -3,21 +3,21 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('Clone') {
             steps {
-                echo 'Building project'
+                echo 'Cloning repository'
             }
         }
 
-        stage('Test') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Running tests'
+                sh 'docker build -t my-app .'
             }
         }
 
-        stage('Deploy') {
+        stage('Run Container') {
             steps {
-                echo 'Deploy stage'
+                sh 'docker run -d -p 5000:5000 my-app'
             }
         }
 
