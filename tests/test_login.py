@@ -15,7 +15,7 @@ def test_login_page(driver):
     login_page = LoginPage(driver)
 
     # Call login method with username and password
-    login_page.login("hello@gmail.com", "Hello@gmail.com123")
+    login_page.login("john@example.com", "User@123")
 
     # Wait until some element on dashboard is visible (React apps may not change URL)
     WebDriverWait(driver, 10).until(
